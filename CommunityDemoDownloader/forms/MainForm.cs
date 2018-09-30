@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using System.IO;
 using CommunityDemoDownloader.utils;
 using System.Threading;
-using System.Threading;
 namespace CommunityDemoDownloader
 {
     public partial class MainForm : Form
@@ -110,6 +109,14 @@ namespace CommunityDemoDownloader
 
         public static MainForm GetObject() {
             return MainForm.obj;
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (DownloadThread.ThreadState != ThreadState.Stopped) {
+                e.Cancel = true;
+                MessageBox.Show("请等待下载完!");
+            }
         }
     }
 }
