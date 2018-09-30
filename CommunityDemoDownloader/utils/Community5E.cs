@@ -75,6 +75,7 @@ namespace CommunityDemoDownloader.utils
             });
             mainForm.setProgress(0);
             mainForm.setLabel("下载完成!");
+            mainForm.FinishDownload();
             while (!mainForm.SetThreadStopped()) { Thread.Sleep(200); };
         }
 

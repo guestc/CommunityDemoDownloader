@@ -33,10 +33,15 @@ namespace CommunityDemoDownloader
 
         private void button_download_Click(object sender, EventArgs e)
         {
-            if (DownloadThread == null || DownloadThread.ThreadState == ThreadState.Stopped) {
+            if (DownloadThread == null || DownloadThread.ThreadState == ThreadState.Stopped)
+            {
                 DownloadThread = new Thread(startDownload);
                 DownloadThread.Start(comboBox_communityname.SelectedItem.ToString());
             }
+        }
+
+        public void FinishDownload() {
+            //todo
         }
 
         public bool SetThreadStopped() {
